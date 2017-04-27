@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SEND NOODS</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=League+Script" rel="stylesheet">
+	 <meta charset="UTF-8">
+	 <style type="text/css">
+	 	
+	 	body {
+	font-family: 'League Script', cursive;
+	font-size: 48px;
+
+
+	 </style>
+</head>
+<body>
+
+	<h1>I know. Japanese Noods are hard to tell apart from each other. </h1>
+
+	<form>
+		How wide (diameter) is the nood in your hand/mouth? centimeter only<br>
+		<input type="text" name="width" id="wid"><br>
+		<button type="button" id="submit">SHOW ME WAT MAH NOOD IS!</button>
+	</form>
+
+	<div>
+		<p id="result"></p>
+	</div>
+
+	<div>
+		<p id="cite"></p>
+	</div>
+
+	<script>
+		function identifyNoodles(diameter){
+			var output; 
+			if (diameter<0.13) {
+				output = "そうめん（麵線）";
+			} else if (diameter >= 0.13 && diameter <0.17) {
+				output = "ひやむぎ（冷麵、麵條）";
+			}  else {
+				output = "うどん（烏龍麵）";
+			}
+			return output;
+		}
+	</script>
+
+	<script>
+		var message; 
+		var result;
+		var works_cited = "http://blog.xuite.net/shuying.lihming/travel/79294067" ;
+		
+		$('#submit').click(function(){
+			message = document.getElementById('wid').value;
+			result = identifyNoodles(message);
+			console.log(result);
+			$('#result').html(result);
+			$('#cite').html("work cited: " + works_cited);
+		});
+
+
+	</script>
+</body>
+</html>
